@@ -22,7 +22,7 @@ Após terminar seu teste submeta um pull request e aguarde seu feedback.
 - Utilizar os conceitos de DDD, OO, POCO e SOLID que você julgar necessário;
 
 ## Pré-requisitos:
-- HTML5, CSS, JavaScript, POO, C#, .NET 4.0+, WebApi, C#, ASP NET, SQL, LINQ, Entity Framework, Code First, Design Responsivo, WebServices *(SOAP)*, APIs Restfull e Windows Services
+- HTML5, CSS, JavaScript, POO, C#, .NET, WebApi, C#, ASP NET, SQL, LINQ, Entity Framework, Code First, Angular 5 ou superior *(TypeScript)*, Desenvolvimento Mobile, Design Responsivo, WebServices *(SOAP)*, APIs Restfull e Windows Services
 
 ### IDE:
  - Microsoft Visual Studio 2013+ Community (https://visualstudio.microsoft.com/pt-br/vs/community/)
