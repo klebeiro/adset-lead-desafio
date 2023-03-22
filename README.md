@@ -1,4 +1,4 @@
-<img src="https://github.com/adset-innov/adset-integrador-desafio/blob/main/adset-integrador.png">
+<img src="https://github.com/adset-innov/adset-lead-desafio/blob/main/adset-lead.png">
 
 # Desafio para candidatos (AdSet Lead)
 
