@@ -13,7 +13,7 @@ Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
 ## Instruções:
 - Criar um serviço windows no Visual Studio ultizando tipo Windows Desktop com Template Windows Service, para sincronizar todos os dias ás 02h (AM) os dados da api de Tabela FIPE (https://documenter.getpostman.com/view/7064033/SWT5jMGk) das Marcas e Modelos de Carros e gravar em banco de dados, os modelos devem ser vinculados as suas respectivas marcas.
-- Criar Projeto no VSCODE para o Frond-end ultizando Algular CLI 13.3.2 e NodeJS 16.4.0
+- Criar Projeto no VSCODE para o Frond-end ultizando Algular CLI 12.1.0 e NodeJS v14.16.1
 - Criar Projeto no Visual Studio para o Back-end (endpoint) do tipo ASP.NET Web Application com Template MVC/WebAPI do tipo Restfull
 - No cadastro os campos Marca e Modelo devem consultar do banco de dados e os modelos devem ser exibidos conforme selecionar a marca correspondente.
 - A tela de estoque / consulta deverá ser desenvolvida conforme o layout (https://github.com/adset-innov/adset-lead-desafio/blob/main/adset-layout.ai) criado no programa Adobe Illustrator.
@@ -23,7 +23,7 @@ Após terminar seu teste submeta um pull request e aguarde seu feedback.
 - Utilizar os conceitos de DDD, OO, POCO e SOLID que você julgar necessário;
 
 ## Pré-requisitos:
-- HTML5, CSS, JavaScript, POO, C#, .NET 4.0+, WebApi, C#, ASP NET, SQL, LINQ, Entity Framework, Code First, Angular 13 ou superior *(TypeScript)*, Design Responsivo, WebServices (SOAP), APIs Restfull e Windows Services
+- HTML5, CSS, JavaScript, POO, C#, .NET 4.0+, WebApi, C#, ASP NET, SQL, LINQ, Entity Framework, Code First, Angular 12 ou superior *(TypeScript)*, Design Responsivo, WebServices (SOAP), APIs Restfull e Windows Services
 - Angular Material (https://material.angular.io/)
 
 ### IDE:
