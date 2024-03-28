@@ -13,7 +13,7 @@
 Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
 ## Instruções:
-- Criar Projeto no VSCODE para o Frond-end ultizando Algular CLI 12.1.0 e NodeJS v16.x
+- Criar Projeto no VSCODE para o Frond-end ultizando Angular CLI 12.1.0 e NodeJS v16.x
 - Criar Projeto no Visual Studio para o Back-end (endpoint) do tipo ASP.NET Web Application com Template MVC/WebAPI do tipo Restfull
 - A tela de estoque / consulta deverá ser desenvolvida conforme o layout (https://github.com/adset-innov/adset-lead-desafio/blob/main/adset-layout.ai) criado no programa Adobe Illustrator.
 - Deixe a estrutura completa do Migration para o Entity Framework Code-First pronta para apenas executarmos e gerar o banco e tabelas.
