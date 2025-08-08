@@ -1,0 +1,160 @@
+.vehicle-search-item-container {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.car-information-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 43rem;
+    margin-top: .5rem 0;
+    background-color: #E7E7E7;
+    flex-shrink: 0;
+}
+
+.delete-button {
+    padding: 3.8rem .5rem;
+    margin: 0 .8rem;
+    background-color: #E7E7E7;
+    flex-shrink: 0;
+}
+
+.delete-button img {
+    width: 18px;
+    height: 18px;
+}
+
+.car-information-image {
+    width: 256px;
+    height: 140px;
+}
+
+.car-information-details {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+    font-size: 12px;
+}
+
+.highlighted-information {
+    color: #40A52B;
+}
+
+.highlighted-information-red {
+    color: #e2001a;
+}
+
+.car-information-left-wrapper {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 350px;
+    gap: 1rem;
+    padding: 0 .6rem;
+    height: 140px;
+}
+
+.car-information-right-wrapper {
+    text-align: right;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;;
+    align-items: center;
+    width: 50%;
+    gap: 1rem;
+    padding: 0 3rem;
+}
+
+.car-information-title {
+    width: 100%;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: #707173;
+    margin-top: .4rem;
+}
+
+.car-information-sidemenu {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items:center;
+    left: 45px;
+    top: 15px;
+}
+
+.car-information-sidemenu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 .3rem;
+    font-size: 13px;
+    height: 100%;
+}
+
+.car-information-sidemenu-item:nth-child(2) {
+    margin-left: 1rem;
+}
+
+.edit-vehicle-button img {
+    background-color: #1085C6;
+    padding: .4rem .4rem;
+    border-radius: 0 12px 12px 0;
+    font-weight: bold;
+}
+
+.car-information-pricing {
+    background-image: url("../../../assets/price-bg.webp");
+    background-repeat: no-repeat;
+    padding: 0 1rem;
+    width: 150px;
+    font-size: 14px;
+    position: relative;
+    top: 6px;
+    left: 48px;
+    overflow: hidden;
+}
+
+.clear-integration-v {
+    position: relative;
+    top: 40px;
+    left: 125px;
+}
+
+.integration-columns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    height: 155px;
+    font-size: 12px;
+    width: 240px;
+}
+
+.integration-option {
+    margin-left: 1rem;
+    padding: .3rem;
+}
+
+.vertical-divider {
+    border-left: 1px solid #C4C4C4;
+    height: 120px;
+    margin: 0 .8rem;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #40A52B;
+}
+
+.integration-option label {
+    margin-left: 0.5rem;
+}

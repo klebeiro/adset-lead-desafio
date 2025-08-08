@@ -1,0 +1,21 @@
+.header-bg {
+    background-color: #E7E7E7;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-bottom: #C6C7C8 1px solid;
+}
+
+.header-logo {
+    margin: 1rem 2rem;
+    width: 6rem;
+}
+
+.main-container {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    min-height: 55vh;
+    background-color: #F6F6F6; 
+}

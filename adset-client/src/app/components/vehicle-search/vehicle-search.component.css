@@ -1,0 +1,331 @@
+.vehicle-search-container {
+    background-color: #E7E7E7;
+    width: 95vw;
+    min-height: 100%;
+    margin-right: 0;
+    color: #87888A;
+}
+
+.vehicle-search-menu {
+    display: flex;
+    max-width: 75rem;
+    height: 80px;
+    align-items: center;
+    font-size: 15px;
+}
+
+.vehicle-counter {
+    display: flex;
+    flex-direction: row;
+    margin: 0 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.vehicle-counter-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.vehicle-inventory-export {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.vehicle-inventory-export p {
+    margin: 8px 0;
+    text-align: center;
+}
+
+.vehicle-inventory-export img {
+    padding-bottom: 10px;
+}
+
+.vertical-divider {
+    width: 2px;
+    background-color: #C6C7C8;
+    height: 85%;
+    margin: 0 10px;    
+}
+
+.diagonal-divider {
+    width: 2px;
+    background-color: #C6C7C8;
+    height: 50%;
+    margin: 0 25px;
+    rotate: 20deg;    
+}
+
+.divider-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.text-red {
+    color: #e2001a;
+}
+
+.text-green {
+    color: #41a62a;
+}
+
+.text-blue {
+    color: #0b72b5;
+}
+
+.register-vehicle-button {
+    margin: 0 .5rem;
+    flex-shrink: 0;
+}
+
+.save-button {
+    flex-shrink: 0;
+}
+
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-right: 2rem;
+}
+
+.horizontal-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #C6C7C8;
+    margin: 0;
+}
+
+.vehicle-search-filter {
+    display: flex;
+    background-color: white;
+    margin: 0rem .5rem;
+    padding: .8rem;
+    border-radius: 0 0 18px 18px;
+    width: 72.7rem;
+}
+
+.vehicle-filter {
+    display: flex;
+    text-align: center;
+    color: #3D3D3F;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-filter input {
+    background-color: #F6F6F6;
+    border-radius: 18px;
+    border: 1px solid #3D3D3F;
+    padding: .4rem .2rem;
+    margin: .3rem;
+}
+
+.vehicle-filter select {
+    background-color: #F6F6F6;
+    border-radius: 18px 0 0 18px;
+    border: 1px solid #3D3D3F;
+    color: #3D3D3F;
+    padding: .4rem .8rem;
+    margin: .3rem;
+}
+
+.field-group:first-child label {
+    display: flex;
+    text-align: left;
+    align-items: left;
+    justify-items: left;
+    margin-left: 1rem;
+}
+
+.field-group:nth-child(1) input {
+    width: 9rem;
+}
+
+.field-group:nth-child(2) input {
+    width: 8rem;
+}
+
+.field-group:nth-child(3) input {
+    width: 11.5rem;
+}
+
+.field-group:nth-child(4) select {
+    margin-right: 0;
+    width: 4.5rem;
+}
+
+.field-group:nth-child(5) select {
+    width: 4.5rem;
+    border-radius: 0px;
+    margin-left: 0;
+    border-left: none;
+}
+
+.field-group:nth-child(6) select {
+    width: 8rem;
+}
+
+.field-group:nth-child(7) select {
+    width: 5rem;
+}
+
+.field-group:nth-child(9) select {
+    width: 5rem;
+}
+
+.search-btn {
+    background-color: #40A52B;
+    flex-shrink: 0;
+    border-radius: 0 0 16px 16px;;
+    position: relative;
+    right: 550px;
+    top: 65px;
+    height: 2.5rem;
+    width: 6rem;
+}
+
+.search-btn img {
+    margin: auto;
+}
+
+.filter-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(../../../assets/dropdown.webp);
+    background-repeat: no-repeat;
+    background-position: right 0;
+    background-size: 16px;
+}
+
+.clear-button {
+    display: flex;
+    flex-shrink: 0;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.1rem;
+    margin-left: 0.2rem;
+}
+
+.arrow-button {
+    position: relative;
+    right: 135px;
+    top: 47px;
+    display: flex;
+    flex-shrink: 0;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.1rem;
+    margin-left: 0.2rem;
+    background-color: white;
+    padding: 0 .3rem .2rem .3rem;
+    height: 20px;
+    border-radius: 0 0 18px 18px;
+}
+
+.vehicle-list-header {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content:  space-between;
+    width: 73rem;
+}
+
+.filter-pagination-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(../../../assets/dropdown-green.webp);
+    background-repeat: no-repeat;
+    background-position: right 0;
+    background-size: 16px;
+    padding: 5px 24px;
+    border-radius: 18px 0 0 18px;
+    border: 1px solid #3D3D3F;
+}
+
+.integrations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: .5rem;
+}
+
+.integration-logo-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .7rem 2rem;
+    border-radius: 18px 18px 0 0  ;
+    background-color: white;
+    height: 60px;
+    margin: 0 .3rem;
+}
+
+.integration-logo-clear {
+    position: relative;
+    top: 10px;
+}
+
+.vehicle-list-header-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.vehicle-search-sort {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    font-size: 12px;
+}
+
+.sort-options {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.sort-options button {
+    display: flex;
+    margin: 0 .5rem;
+}
+
+.sort-options button img {
+    margin-left: .3rem;
+}
+
+.sort-options p {
+    margin: 0 .5rem;
+    color: #C6C7C8;
+    font-size: 16px;
+}
+
+.clear-sort {
+    width: 100%;
+}
