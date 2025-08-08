@@ -1,60 +1,78 @@
 <div class="vehicle-search-item-container">
-    <div class="delete-button"><img src="../../../assets/delete.webp" alt="Deletar veículo"></div>
-    <div class="car-information-container">
-        <img class="car-information-image" src="../../../assets/image-placeholder.webp" alt="Placeholder de imagem">
-        <div class="car-information-left-wrapper">
-            <p class="car-information-title">MARCA MODELO | ANO</p>
-            <div class="car-information-details">
-                <p>Placa - <span class="highlighted-information">AAA-0102</span></p>
-                <p>Km - <span class="highlighted-information">25.000</span></p>
-                <p>Cor - <span class="highlighted-information">Branco</span></p>
-            </div>
-        </div>
-        <div class="car-information-right-wrapper">
-            <p class="car-information-pricing highlighted-information">R$103.900,00</p>
-            <div class="car-information-sidemenu">
-                <button class="edit-vehicle-button" routerLink="/vehicle/edit/1">
-                    <img src="../../../assets/edit.webp" alt="Editar veículo">
-                </button>
-                <div class="car-information-sidemenu-item">
-                    <img src="../../../assets/photo-counter.webp" alt="Fotos">
-                    <p class="highlighted-information">08</p>
-                </div>
-                <div class="car-information-sidemenu-item">
-                    <img src="../../../assets/optionals.webp" alt="Opcionais">
-                    <p class="highlighted-information">Opcionais</p>
-                </div>
-            </div>
-            <button class="clear-integration-v"><img src="../../../assets/clear-integration-v.webp" alt="Limpar integração"></button>
-        </div>
+    <button class="delete-button">
+        <img src="../../../assets/delete.webp" alt="Deletar veículo">
+    </button>
+  <div class="car-information-container">
+    <img
+      class="car-information-image"
+      [src]="vehicle.imagemUrl || '../../../assets/image-placeholder.webp'"
+      alt="Imagem do veículo">
+    <div class="car-information-left-wrapper">
+      <p class="car-information-title">{{ vehicle.marca }} {{ vehicle.modelo }} | {{ vehicle.ano }}</p>
+      <div class="car-information-details">
+        <p>Placa - <span class="highlighted-information">{{ vehicle.placa }}</span></p>
+        <p>Km - <span class="highlighted-information">{{ formatKm(vehicle.km) }}</span></p>
+        <p>Cor - <span class="highlighted-information">{{ vehicle.cor }}</span></p>
+      </div>
     </div>
-    <div class="integration-columns">
-        <div class="integration-options-container">
-            <div class="integration-option">
-                <p>Diamante Feirão</p>
-                <input type="checkbox" name="diamante-feirao" value="diamante-feirao">
-                <label for="diamante-feirao"><span class="highlighted-information-red">010</span> - <span class="highlighted-information">008</span></label><br>
-            </div>
-            <div class="integration-option">
-                <p>Diamante</p>
-                <input type="checkbox" name="diamante" value="diamante">
-                <label for="diamante"><span class="highlighted-information-red">030</span> - <span class="highlighted-information">025</span></label><br>
-            </div>
-            <div class="integration-option">
-                <p>Platinum</p>
-                <input type="checkbox" name="platinum" value="platinum">
-                <label for="platinum"><span class="highlighted-information-red">040</span> - <span class="highlighted-information">010</span></label><br>
-            </div>
+    <div class="car-information-right-wrapper">
+      <p class="car-information-pricing highlighted-information">{{ formatPrice(vehicle.preco) }}</p>
+      <div class="car-information-sidemenu">
+        <button class="edit-vehicle-button" [routerLink]="'/vehicle/edit/' + vehicle.id">
+          <img src="../../../assets/edit.webp" alt="Editar veículo">
+        </button>
+        <div class="car-information-sidemenu-item">
+          <img src="../../../assets/photo-counter.webp" alt="Fotos">
+          <p class="highlighted-information">{{ vehicle.quantidadeFotos.toString().padStart(2, '0') }}</p>
         </div>
-        <div class="vertical-divider"></div>
-        <div class="integration-options-container">
-            <div class="integration-option">
-                <p>Básico</p>
-                <input type="checkbox" name="basico" value="basico">
-                <label for="vehicle1"><span class="highlighted-information-red">030</span> - <span class="highlighted-information">025</span></label><br>
-            </div>
+        <div class="car-information-sidemenu-item">
+          <img src="../../../assets/optionals.webp" alt="Opcionais">
+          <p class="highlighted-information">{{ getOpcionaisText() }}</p>
         </div>
-        
+      </div>
+      <button class="clear-integration-v">
+        <img src="../../../assets/clear-integration-v.webp" alt="Limpar integração">
+      </button>
+    </div>
+  </div>
+  <div class="integration-columns">
+    <div class="integration-options-container">
+      <div class="integration-option">
+        <p>Diamante Feirão</p>
+        <input type="checkbox" name="diamante-feirao" value="diamante-feirao">
+        <label for="diamante-feirao">
+          <span class="highlighted-information-red">010</span> -
+          <span class="highlighted-information">008</span>
+        </label><br>
+      </div>
+      <div class="integration-option">
+        <p>Diamante</p>
+        <input type="checkbox" name="diamante" value="diamante">
+        <label for="diamante">
+          <span class="highlighted-information-red">030</span> -
+          <span class="highlighted-information">025</span>
+        </label><br>
+      </div>
+      <div class="integration-option">
+        <p>Platinum</p>
+        <input type="checkbox" name="platinum" value="platinum">
+        <label for="platinum">
+          <span class="highlighted-information-red">040</span> -
+          <span class="highlighted-information">010</span>
+        </label><br>
+      </div>
     </div>
     <div class="vertical-divider"></div>
+    <div class="integration-options-container">
+      <div class="integration-option">
+        <p>Básico</p>
+        <input type="checkbox" name="basico" value="basico">
+        <label for="basico">
+          <span class="highlighted-information-red">030</span> -
+          <span class="highlighted-information">025</span>
+        </label><br>
+      </div>
+    </div>
+  </div>
+  <div class="vertical-divider"></div>
 </div>

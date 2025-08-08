@@ -1,3 +1,92 @@
 <div class="vehicle-registration-form-container">
-    <p>vehicle-registration-form works!</p>
+  <form #vehicleForm="ngForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input id="marca" name="marca" type="text" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <input id="modelo" name="modelo" type="text" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="ano">Ano</label>
+        <input id="ano" name="ano" type="number" ngModel required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="placa">Placa</label>
+        <input id="placa" name="placa" type="text" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="km">Km</label>
+        <input id="km" name="km" type="number" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="cor">Cor</label>
+        <input id="cor" name="cor" type="text" ngModel required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input id="preco" name="preco" type="number" ngModel required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Opcionais</label>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="opcionais" value="Ar Condicionado" ngModel>
+            Ar Condicionado
+          </label>
+          <label>
+            <input type="checkbox" name="opcionais" value="Alarme" ngModel>
+            Alarme
+          </label>
+          <label>
+            <input type="checkbox" name="opcionais" value="Airbag" ngModel>
+            Airbag
+          </label>
+          <label>
+            <input type="checkbox" name="opcionais" value="Freio ABS" ngModel>
+            Freio ABS
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+  <div class="form-group">
+    <label for="fotos">Fotos (até 15)</label>
+    <input
+      id="fotos"
+      type="file"
+      (change)="onFileSelected($event)"
+      [disabled]="photoPreviews.length >= 15"
+    />
+    <div class="photo-preview-list">
+      <div
+        class="photo-preview"
+        *ngFor="let preview of photoPreviews; let i = index"
+      >
+        <img [src]="preview" alt="Preview da foto" />
+        <button type="button" (click)="removePhoto(i)">Remover</button>
+      </div>
+    </div>
+    <small *ngIf="photoPreviews.length >= 15" class="limit-warning">
+      Limite de 15 fotos atingido.
+    </small>
+  </div>
+</div>
+    
+    <div class="form-actions">
+      <button type="submit">Cadastrar</button>
+    </div>
+  </form>
 </div>

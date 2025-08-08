@@ -32,53 +32,118 @@
     <div class="horizontal-divider"></div>
     <div class="vehicle-search-filter">
         <form class="vehicle-filter" id="vehicle-filter-form">
-            <div class="field-group">
-                <label>Placa</label>
-                <input type="text" />
-            </div>
-            <div class="field-group">
-                <label>Marca</label>
-                <input type="text" />
-            </div>
-            <div class="field-group">
-                <label>Modelo</label>
-                <input type="text" />
-            </div>
-            <div class="field-group">
-                <label>Ano Min</label>
-                <select class="filter-dropdown">
-                <option>Todos</option>
-                </select>
-            </div>
-            <div class="field-group">
-                <label>Ano Max</label>
-                <select class="filter-dropdown">
-                <option>Todos</option>
-                </select>
-            </div>
-            <div class="field-group">
-                <label>Preço</label>
-                <select class="filter-dropdown">
-                <option>Todos</option>
-                </select>
-            </div>
-            <div class="field-group">
-                <label>Fotos</label>
-                <select class="filter-dropdown">
-                <option>Todos</option>
-                </select>
-            </div>
-            <div class="field-group">
-                <label>Opcionais</label>
-                <input type="text" />
-            </div>
-            <div class="field-group">
-                <label>Cor</label>
-                <select class="filter-dropdown">
-                <option>Todos</option>
-                </select>
-            </div>
-        </form>
+    <div class="field-group">
+        <label>Placa</label>
+        <input type="text" />
+    </div>
+    <div class="field-group">
+        <label>Marca</label>
+        <input type="text" />
+    </div>
+    <div class="field-group">
+        <label>Modelo</label>
+        <input type="text" />
+    </div>
+    <div class="field-group">
+        <label>Ano Min</label>
+        <select class="filter-dropdown">
+            <option>Todos</option>
+            <option>2000</option>
+            <option>2001</option>
+            <option>2002</option>
+            <option>2003</option>
+            <option>2004</option>
+            <option>2005</option>
+            <option>2006</option>
+            <option>2007</option>
+            <option>2008</option>
+            <option>2009</option>
+            <option>2010</option>
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+        </select>
+    </div>
+    <div class="field-group">
+        <label>Ano Max</label>
+        <select class="filter-dropdown">
+            <option>Todos</option>
+            <option>2000</option>
+            <option>2001</option>
+            <option>2002</option>
+            <option>2003</option>
+            <option>2004</option>
+            <option>2005</option>
+            <option>2006</option>
+            <option>2007</option>
+            <option>2008</option>
+            <option>2009</option>
+            <option>2010</option>
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+        </select>
+    </div>
+    <div class="field-group">
+        <label>Preço</label>
+        <select class="filter-dropdown">
+            <option>Todos</option>
+            <option>10mil a 50mil</option>
+            <option>50mil a 90mil</option>
+            <option>+90mil</option>
+        </select>
+    </div>
+    <div class="field-group">
+        <label>Fotos</label>
+        <select class="filter-dropdown">
+            <option>Todos</option>
+            <option>Com Fotos</option>
+            <option>Sem Fotos</option>
+        </select>
+    </div>
+    <div class="field-group">
+        <label>Opcionais</label>
+        <input type="text" />
+    </div>
+    <div class="field-group">
+        <label>Cor</label>
+        <select class="filter-dropdown">
+            <option>Todos</option>
+            <option>Branco</option>
+            <option>Preto</option>
+            <option>Prata</option>
+            <option>Vermelho</option>
+            <option>Azul</option>
+            <option>Cinza</option>
+            <option>Verde</option>
+            <option>Amarelo</option>
+            <option>Marrom</option>
+            <option>Laranja</option>
+        </select>
+    </div>
+    </form>
         <button class="clear-button"><img src="../../../assets/clear.webp" alt="Limpar"></button>
         <button type="submit" form="vehicle-filter-form" class="search-btn"><img src="../../../assets/search.webp" alt="Buscar"></button>
         <button class="arrow-button"><img src="../../../assets/arrow-up.webp" alt="Esconder filtros"></button>
@@ -132,5 +197,22 @@
         <app-vehicle-search-item></app-vehicle-search-item>
         <app-vehicle-search-item></app-vehicle-search-item>
     </div>
-
+    <div class="pagination-container">
+  <button class="pagination-arrow-btn"><span>&laquo;</span></button>
+  <button class="pagination-arrow-btn"><span>&lsaquo;</span></button>
+  <span class="pagination-numbers">
+    <span class="pagination-number active">1</span>
+    <span class="pagination-number">2</span>
+    <span class="pagination-number">3</span>
+    <span class="pagination-number">4</span>
+    <span class="pagination-number">5</span>
+    <span class="pagination-number">6</span>
+    <span class="pagination-number">7</span>
+    <span class="pagination-number">8</span>
+    <span class="pagination-number">9</span>
+    <span class="pagination-number">10</span>
+  </span>
+  <button class="pagination-arrow-btn"><span>&rsaquo;</span></button>
+  <button class="pagination-arrow-btn"><span>&raquo;</span></button>
+</div>
 </section>

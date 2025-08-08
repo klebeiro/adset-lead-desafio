@@ -329,3 +329,48 @@
 .clear-sort {
     width: 100%;
 }
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0 1rem 0;
+  gap: 2px;
+}
+
+.pagination-arrow-btn {
+  border: 1px solid #bbb;
+  background: #fff;
+  color: #333;
+  padding: 2px 8px;
+  margin: 0 1px;
+  font-size: 16px;
+  min-width: 32px;
+  min-height: 32px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pagination-arrow-btn:hover {
+  background: #f0f0f0;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 8px;
+}
+
+.pagination-number {
+  font-size: 16px;
+  color: #333;
+  padding: 0 4px;
+  font-weight: normal;
+}
+
+.pagination-number.active {
+  color: #41a62a;
+  font-weight: bold;
+}

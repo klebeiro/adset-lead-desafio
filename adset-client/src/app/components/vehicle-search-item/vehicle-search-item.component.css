@@ -119,15 +119,15 @@
     width: 150px;
     font-size: 14px;
     position: relative;
-    top: 6px;
-    left: 48px;
+    top: 7px;
+    left: 51px;
     overflow: hidden;
 }
 
 .clear-integration-v {
     position: relative;
     top: 40px;
-    left: 125px;
+    left: 132px;
 }
 
 .integration-columns {
@@ -158,3 +158,4 @@ input[type="checkbox"]:checked {
 .integration-option label {
     margin-left: 0.5rem;
 }
+
