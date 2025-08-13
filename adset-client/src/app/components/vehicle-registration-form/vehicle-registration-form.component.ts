@@ -41,6 +41,9 @@ export class VehicleRegistrationFormComponent implements OnInit {
   vehicleId?: number;
   loading = false;
 
+  priceInput = '';
+  licensePlateInput = '';
+
   constructor(
     private vehicleService: VehicleService,
     private route: ActivatedRoute,
@@ -55,6 +58,9 @@ export class VehicleRegistrationFormComponent implements OnInit {
     if (this.isEdit) {
       this.vehicleId = Number(idParam);
       this.loadVehicle(this.vehicleId);
+    } else {
+      this.onPriceInput('');
+      this.onLicensePlateInput('');
     }
   }
 
@@ -73,7 +79,7 @@ export class VehicleRegistrationFormComponent implements OnInit {
           brand: v.brand,
           model: v.model,
           year: v.year,
-          licensePlate: v.licensePlate,
+          licensePlate: (v.licensePlate || '').toUpperCase().replace(/[^A-Z0-9]/g, ''),
           mileage: v.mileage as any,
           color: v.color,
           price: v.price,
@@ -81,6 +87,10 @@ export class VehicleRegistrationFormComponent implements OnInit {
           photoUrls: (v.photos || []).map(p => p.url)
         };
         this.photoUrls = [...(this.formModel.photoUrls || [])];
+
+        this.onLicensePlateInput(this.formModel.licensePlate || '');
+        this.onPriceInput(String((this.formModel.price ?? 0).toFixed(2)).replace('.', ',')); 
+
         this.loading = false;
       },
       error: (e) => {
@@ -90,6 +100,44 @@ export class VehicleRegistrationFormComponent implements OnInit {
         this.router.navigate(['/vehicle']);
       }
     });
+  }
+
+  onPriceInput(value: string) {
+    const digits = (value || '').replace(/\D/g, ''); // só números
+    const cents = Number(digits || '0');
+    const numeric = cents / 100;
+
+    this.formModel.price = numeric;
+    this.priceInput = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(numeric);
+  }
+
+  onPriceBlur() {
+    const n = Number(this.formModel.price ?? 0);
+    this.priceInput = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n);
+  }
+
+  onLicensePlateInput(value: string) {
+    const raw = (value || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+    let masked = raw;
+    if (raw.length >= 7) {
+      const seven = raw.substring(0, 7);
+
+      if (/^[A-Z]{3}[0-9]{4}$/.test(seven)) {
+        masked = `${seven.substring(0,3)}-${seven.substring(3)}`; 
+      } else if (/^[A-Z]{3}[0-9][A-Z][0-9]{2}$/.test(seven)) {
+        masked = seven; 
+      } else {
+        masked = seven; 
+      }
+    }
+
+    this.licensePlateInput = masked;
+    this.formModel.licensePlate = raw;
+  }
+
+  private isValidPlate(raw: string): boolean {
+    return /^[A-Z]{3}[0-9]{4}$/.test(raw) || /^[A-Z]{3}[0-9][A-Z][0-9]{2}$/.test(raw);
   }
 
   hasFeature(name: FeatureKey): boolean {
@@ -142,7 +190,7 @@ export class VehicleRegistrationFormComponent implements OnInit {
     const brand = this.formModel.brand?.trim();
     const model = this.formModel.model?.trim();
     const year = Number(this.formModel.year ?? 0);
-    const licensePlate = this.formModel.licensePlate?.trim();
+    const licensePlate = (this.formModel.licensePlate || '').toUpperCase();
     const color = this.formModel.color?.trim();
     const price = Number(this.formModel.price ?? 0);
 
@@ -150,6 +198,7 @@ export class VehicleRegistrationFormComponent implements OnInit {
     if (!model) return 'Informe o modelo.';
     if (!year || isNaN(year)) return 'Informe um ano válido.';
     if (!licensePlate) return 'Informe a placa.';
+    if (!this.isValidPlate(licensePlate)) return 'Placa inválida (use AAA-1234 ou AAA1A23).';
     if (!color) return 'Informe a cor.';
     if (!price || isNaN(price)) return 'Informe um preço válido.';
     return null;
@@ -162,19 +211,17 @@ export class VehicleRegistrationFormComponent implements OnInit {
       (this.formModel.mileage as any) !== '' &&
       !isNaN(Number(this.formModel.mileage));
 
-    const base = {
+    return {
       brand: this.formModel.brand?.trim() || '',
       model: this.formModel.model?.trim() || '',
       year: Number(this.formModel.year ?? 0),
-      licensePlate: (this.formModel.licensePlate?.trim() || '').toUpperCase(),
+      licensePlate: (this.formModel.licensePlate || '').toUpperCase().replace(/[^A-Z0-9]/g, ''),
       mileage: mileageValid ? Number(this.formModel.mileage) : undefined,
       color: this.formModel.color?.trim() || '',
       price: Number(this.formModel.price ?? 0),
       featureIds: [...(this.formModel.featureIds ?? [])],
       photoUrls: [...this.photoUrls],
     };
-
-    return base;
   }
 
   onSubmit() {
@@ -234,5 +281,7 @@ export class VehicleRegistrationFormComponent implements OnInit {
     };
     this.photoUrls = [];
     this.newPhotoUrl = '';
+    this.priceInput = '';
+    this.licensePlateInput = '';
   }
 }

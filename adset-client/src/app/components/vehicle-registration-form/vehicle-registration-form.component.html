@@ -54,10 +54,11 @@
           id="licensePlate"
           name="licensePlate"
           type="text"
-          [(ngModel)]="formModel.licensePlate"
+          [value]="licensePlateInput"
+          (input)="onLicensePlateInput($any($event.target).value)"
           required
-          maxlength="10"
-          placeholder="Ex.: ABC1D23"
+          maxlength="8"
+          placeholder="AAA-1234 ou AAA1A23"
           style="text-transform: uppercase"
           [disabled]="isEdit"
         />
@@ -97,12 +98,13 @@
         <input
           id="price"
           name="price"
-          type="number"
-          [(ngModel)]="formModel.price"
+          type="text"
+          [value]="priceInput"
+          (input)="onPriceInput($any($event.target).value)"
+          (blur)="onPriceBlur()"
+          inputmode="numeric"
           required
-          min="0"
-          step="0.01"
-          placeholder="Ex.: 85000"
+          placeholder="R$ 0,00"
         />
         <small class="error" *ngIf="vehicleForm.submitted && !formModel.price">Informe o preço.</small>
       </div>
