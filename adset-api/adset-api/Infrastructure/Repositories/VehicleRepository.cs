@@ -127,7 +127,10 @@ namespace adset_api.Infra.Repositories
 
         public async Task<Vehicle?> GetByIdAsync(int id)
         {
-            return await _context.Vehicles.Include(v => v.Photos.OrderBy(p => p.Id)).FirstOrDefaultAsync(v => v.Id == id);
+            return await _context.Vehicles
+                .Include(v => v.Photos.OrderBy(p => p.Id))
+                .Include(v => v.Features)
+                .FirstOrDefaultAsync(v => v.Id == id);
         }
 
         public async Task<Vehicle> CreateAsync(Vehicle vehicle)
