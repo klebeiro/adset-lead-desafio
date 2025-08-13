@@ -30,7 +30,6 @@ namespace adset_api.Infra.Repositories
 
             if (filter != null)
             {
-                // Filtros existentes
                 if (filter.YearMin.HasValue)
                 {
                     var yearMin = Math.Max(MinYear, filter.YearMin.Value);
@@ -128,7 +127,7 @@ namespace adset_api.Infra.Repositories
 
         public async Task<Vehicle?> GetByIdAsync(int id)
         {
-            return await _context.Vehicles.FirstOrDefaultAsync(v => v.Id == id);
+            return await _context.Vehicles.Include(v => v.Photos.OrderBy(p => p.Id)).FirstOrDefaultAsync(v => v.Id == id);
         }
 
         public async Task<Vehicle> CreateAsync(Vehicle vehicle)

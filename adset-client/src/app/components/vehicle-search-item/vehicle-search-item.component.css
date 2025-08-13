@@ -37,10 +37,9 @@
 }
 
 .car-image-frame {
-  width: 256px;
+  width: 356px;
   height: 140px;
-  overflow: hidden;    
-  flex: 0 0 256px;      
+  overflow: hidden;      
   display: block;
   background: #fff;
 }
