@@ -1,218 +1,172 @@
 <section class="vehicle-search-container">
-    <nav class="vehicle-search-menu">
-        <div class="vehicle-counter">
-            <div class="vehicle-counter-item">
-                <p>110 veículos</p>
-                <button class="text-blue">Total</button>
-            </div>
-            <div class="diagonal-divider"></div>
-            <div class="vehicle-counter-item">
-                <p>080 veículos</p>
-                <button class="text-green">com fotos</button>
-            </div>
-            <div class="diagonal-divider"></div>
-            <div class="vehicle-counter-item">
-                <p>030 veículos</p>
-                <button class="text-red">sem fotos</button>
-            </div>
-        </div>
-        <div class="divider-wrapper">     
-            <div class="vertical-divider"></div>
-            <button class="vehicle-inventory-export">
-                <p>Exportar Estoque</p>
-                <img src="../../../assets/export.webp" alt="Exportar Estoque">
-            </button>
-            <div class="vertical-divider"></div>
-        </div>
-        <div class="button-wrapper">
-            <a class="register-vehicle-button" routerLink="/vehicle/register"><img src="../../../assets/register-vehicle.webp" alt="Cadastrar veículo"></a>
-            <button class="save-button"><img src="../../../assets/save.webp" alt="Salvar"></button>
-        </div>
-    </nav>
-    <div class="horizontal-divider"></div>
-    <div class="vehicle-search-filter">
-        <form class="vehicle-filter" id="vehicle-filter-form">
-    <div class="field-group">
+  <nav class="vehicle-search-menu">
+    <div class="vehicle-counter">
+      <div class="vehicle-counter-item">
+        <p>{{ pad3(stats?.total) }} veículos</p>
+        <button class="text-blue">Total</button>
+      </div>
+      <div class="diagonal-divider"></div>
+      <div class="vehicle-counter-item">
+        <p>{{ pad3(stats?.comFotos) }} veículos</p>
+        <button class="text-green">com fotos</button>
+      </div>
+      <div class="diagonal-divider"></div>
+      <div class="vehicle-counter-item">
+        <p>{{ pad3(stats?.semFotos) }} veículos</p>
+        <button class="text-red">sem fotos</button>
+      </div>
+    </div>
+    <div class="divider-wrapper">
+      <div class="vertical-divider"></div>
+      <button class="vehicle-inventory-export">
+        <p>Exportar Estoque</p>
+        <img src="../../../assets/export.webp" alt="Exportar Estoque">
+      </button>
+      <div class="vertical-divider"></div>
+    </div>
+    <div class="button-wrapper">
+      <a class="register-vehicle-button" routerLink="/vehicle/register"><img src="../../../assets/register-vehicle.webp" alt="Cadastrar veículo"></a>
+      <button class="save-button"><img src="../../../assets/save.webp" alt="Salvar"></button>
+    </div>
+  </nav>
+
+  <div class="horizontal-divider"></div>
+
+  <div class="vehicle-search-filter">
+    <form class="vehicle-filter" id="vehicle-filter-form" (ngSubmit)="search()">
+      <div class="field-group">
         <label>Placa</label>
-        <input type="text" />
-    </div>
-    <div class="field-group">
+        <input type="text" [(ngModel)]="LicensePlate" name="LicensePlate">
+      </div>
+      <div class="field-group">
         <label>Marca</label>
-        <input type="text" />
-    </div>
-    <div class="field-group">
+        <input type="text" [(ngModel)]="Brand" name="Brand">
+      </div>
+      <div class="field-group">
         <label>Modelo</label>
-        <input type="text" />
-    </div>
-    <div class="field-group">
+        <input type="text" [(ngModel)]="Model" name="Model">
+      </div>
+      <div class="field-group">
         <label>Ano Min</label>
-        <select class="filter-dropdown">
-            <option>Todos</option>
-            <option>2000</option>
-            <option>2001</option>
-            <option>2002</option>
-            <option>2003</option>
-            <option>2004</option>
-            <option>2005</option>
-            <option>2006</option>
-            <option>2007</option>
-            <option>2008</option>
-            <option>2009</option>
-            <option>2010</option>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
+        <select class="filter-dropdown" [(ngModel)]="YearMin" name="YearMin">
+          <option [ngValue]="undefined">Todos</option>
+          <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
         </select>
-    </div>
-    <div class="field-group">
+      </div>
+      <div class="field-group">
         <label>Ano Max</label>
-        <select class="filter-dropdown">
-            <option>Todos</option>
-            <option>2000</option>
-            <option>2001</option>
-            <option>2002</option>
-            <option>2003</option>
-            <option>2004</option>
-            <option>2005</option>
-            <option>2006</option>
-            <option>2007</option>
-            <option>2008</option>
-            <option>2009</option>
-            <option>2010</option>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
+        <select class="filter-dropdown" [(ngModel)]="YearMax" name="YearMax">
+          <option [ngValue]="undefined">Todos</option>
+          <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
         </select>
-    </div>
-    <div class="field-group">
+      </div>
+      <div class="field-group">
         <label>Preço</label>
-        <select class="filter-dropdown">
-            <option>Todos</option>
-            <option>10mil a 50mil</option>
-            <option>50mil a 90mil</option>
-            <option>+90mil</option>
+        <select class="filter-dropdown" [(ngModel)]="PriceRange" name="PriceRange">
+          <option [ngValue]="undefined">Todos</option>
+          <option [ngValue]="'10-50'">10mil a 50mil</option>
+          <option [ngValue]="'50-90'">50mil a 90mil</option>
+          <option [ngValue]="'90plus'">+90mil</option>
         </select>
-    </div>
-    <div class="field-group">
+      </div>
+      <div class="field-group">
         <label>Fotos</label>
-        <select class="filter-dropdown">
-            <option>Todos</option>
-            <option>Com Fotos</option>
-            <option>Sem Fotos</option>
+        <select class="filter-dropdown" [(ngModel)]="WithPhotos" name="WithPhotos">
+          <option [ngValue]="undefined">Todos</option>
+          <option [ngValue]="true">Com Fotos</option>
+          <option [ngValue]="false">Sem Fotos</option>
         </select>
-    </div>
-    <div class="field-group">
+      </div>
+      <div class="field-group">
         <label>Opcionais</label>
-        <input type="text" />
-    </div>
-    <div class="field-group">
+        <input type="text" [(ngModel)]="Feature" name="Feature" />
+      </div>
+      <div class="field-group">
         <label>Cor</label>
-        <select class="filter-dropdown">
-            <option>Todos</option>
-            <option>Branco</option>
-            <option>Preto</option>
-            <option>Prata</option>
-            <option>Vermelho</option>
-            <option>Azul</option>
-            <option>Cinza</option>
-            <option>Verde</option>
-            <option>Amarelo</option>
-            <option>Marrom</option>
-            <option>Laranja</option>
+        <select class="filter-dropdown" [(ngModel)]="Color" name="Color">
+          <option [ngValue]="undefined">Todos</option>
+          <option *ngFor="let c of colors" [ngValue]="c">{{ c }}</option>
         </select>
-    </div>
+      </div>
     </form>
-        <button class="clear-button"><img src="../../../assets/clear.webp" alt="Limpar"></button>
-        <button type="submit" form="vehicle-filter-form" class="search-btn"><img src="../../../assets/search.webp" alt="Buscar"></button>
-        <button class="arrow-button"><img src="../../../assets/arrow-up.webp" alt="Esconder filtros"></button>
-    </div>
 
-    <div class="vehicle-list-header">
-        <div class="vehicle-search-sort">
-            <button><img class="clear-sort" src="../../../assets/unsort.webp" alt="Limpar ordenação"></button>
-            <div class="sort-options">
-                <button>
-                    Marca / Modelo
-                    <img src="../../../assets/btn-sort.webp" alt="Sort button">
-                </button>
-                <p>|</p>
-                <button>
-                    Ano
-                    <img src="../../../assets/btn-sort.webp" alt="Sort button">
-                </button>
-                <p>|</p>
-                <button>
-                    Preço
-                    <img src="../../../assets/btn-sort.webp" alt="Sort button">
-                </button>
-                <p>|</p>
-                <button>
-                    Fotos
-                    <img src="../../../assets/btn-sort.webp" alt="Sort button">
-                </button>
-                <p>|</p>
-            </div>
-        </div>
-        <div class="vehicle-list-header-wrapper">
-            <select name="pagination" class="filter-pagination-dropdown">
-                <option>Exibir 100</option>
-            </select>
-            <div class="integrations">
-                <div class="integration-logo-background">
-                    <img src="../../../assets/icarros.webp" alt="ICarros" class="">
-                    <img src="../../../assets/clear-integration.webp" alt="Limpar plano" class="integration-logo-clear">
-                </div>
-                <div class="integration-logo-background">
-                    <img src="../../../assets/webmotors.webp" alt="Webmotors">
-                    <img src="../../../assets/clear-integration.webp" alt="Limpar plano" class="integration-logo-clear">
-                </div>
-            </div>
-        </div>
-    </div>
+    <button class="clear-button" (click)="clear()">
+      <img src="../../../assets/clear.webp" alt="Limpar">
+    </button>
+    <button type="submit" form="vehicle-filter-form" class="search-btn">
+      <img src="../../../assets/search.webp" alt="Buscar">
+    </button>
+    <button class="arrow-button">
+      <img src="../../../assets/arrow-up.webp" alt="Esconder filtros">
+    </button>
+  </div>
 
-    <div class="vehicle-list-body">
-        <app-vehicle-search-item></app-vehicle-search-item>
-        <app-vehicle-search-item></app-vehicle-search-item>
-        <app-vehicle-search-item></app-vehicle-search-item>
+  <div class="vehicle-list-header">
+    <div class="vehicle-search-sort">
+      <button><img class="clear-sort" src="../../../assets/unsort.webp" alt="Limpar ordenação"></button>
+      <div class="sort-options">
+        <button>
+          Marca / Modelo
+          <img src="../../../assets/btn-sort.webp" alt="Sort button">
+        </button>
+        <p>|</p>
+        <button>
+          Ano
+          <img src="../../../assets/btn-sort.webp" alt="Sort button">
+        </button>
+        <p>|</p>
+        <button>
+          Preço
+          <img src="../../../assets/btn-sort.webp" alt="Sort button">
+        </button>
+        <p>|</p>
+        <button>
+          Fotos
+          <img src="../../../assets/btn-sort.webp" alt="Sort button">
+        </button>
+        <p>|</p>
+      </div>
     </div>
-    <div class="pagination-container">
-  <button class="pagination-arrow-btn"><span>&laquo;</span></button>
-  <button class="pagination-arrow-btn"><span>&lsaquo;</span></button>
-  <span class="pagination-numbers">
-    <span class="pagination-number active">1</span>
-    <span class="pagination-number">2</span>
-    <span class="pagination-number">3</span>
-    <span class="pagination-number">4</span>
-    <span class="pagination-number">5</span>
-    <span class="pagination-number">6</span>
-    <span class="pagination-number">7</span>
-    <span class="pagination-number">8</span>
-    <span class="pagination-number">9</span>
-    <span class="pagination-number">10</span>
-  </span>
-  <button class="pagination-arrow-btn"><span>&rsaquo;</span></button>
-  <button class="pagination-arrow-btn"><span>&raquo;</span></button>
-</div>
+    <div class="vehicle-list-header-wrapper">
+      <select name="pagination" class="filter-pagination-dropdown">
+        <option>Exibir 100</option>
+      </select>
+      <div class="integrations">
+        <div class="integration-logo-background">
+          <img src="../../../assets/icarros.webp" alt="ICarros" class="">
+          <img src="../../../assets/clear-integration.webp" alt="Limpar plano" class="integration-logo-clear">
+        </div>
+        <div class="integration-logo-background">
+          <img src="../../../assets/webmotors.webp" alt="Webmotors">
+          <img src="../../../assets/clear-integration.webp" alt="Limpar plano" class="integration-logo-clear">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vehicle-list-body">
+    <app-vehicle-search-item
+      *ngFor="let v of vehicles"
+      [vehicle]="v">
+    </app-vehicle-search-item>
+  </div>
+
+  <div class="pagination-container">
+    <button class="pagination-arrow-btn"><span>&laquo;</span></button>
+    <button class="pagination-arrow-btn"><span>&lsaquo;</span></button>
+    <span class="pagination-numbers">
+      <span class="pagination-number active">1</span>
+      <span class="pagination-number">2</span>
+      <span class="pagination-number">3</span>
+      <span class="pagination-number">4</span>
+      <span class="pagination-number">5</span>
+      <span class="pagination-number">6</span>
+      <span class="pagination-number">7</span>
+      <span class="pagination-number">8</span>
+      <span class="pagination-number">9</span>
+      <span class="pagination-number">10</span>
+    </span>
+    <button class="pagination-arrow-btn"><span>&rsaquo;</span></button>
+    <button class="pagination-arrow-btn"><span>&raquo;</span></button>
+  </div>
 </section>

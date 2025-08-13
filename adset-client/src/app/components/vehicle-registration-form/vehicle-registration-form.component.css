@@ -124,3 +124,53 @@ button[type="submit"]:disabled {
   color: #e2001a;
   font-size: 0.9rem;
 }
+
+.url-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; 
+  margin-top: 0.5rem;
+}
+
+.url-input-row input[type="url"] {
+  flex: 1;
+  padding: 0.2rem;
+  border: 1px solid #3D3D3F;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #F6F6F6;
+  color: #3D3D3F;
+  outline: none;
+}
+
+.url-input-row input[type="url"]::placeholder {
+  color: #7a7a7a; /* leve contraste */
+}
+
+.url-input-row input[type="url"]:focus {
+  border-color: #40A52B; /* usa seu verde como foco */
+  box-shadow: 0 0 0 2px rgba(64, 165, 43, 0.12);
+}
+
+.btn-add-url {
+  background: #40A52B;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-add-url:hover {
+  background: #369022; 
+}
+
+.btn-add-url:disabled,
+.url-input-row input[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

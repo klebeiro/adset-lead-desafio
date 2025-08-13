@@ -1,78 +1,100 @@
 <div class="vehicle-search-item-container">
-    <button class="delete-button">
-        <img src="../../../assets/delete.webp" alt="Deletar veículo">
-    </button>
+  <button class="delete-button" (click)="onDelete()" [disabled]="isDeleting" aria-label="Excluir veículo">
+    <img src="../../../assets/delete.webp" alt="Deletar veículo">
+  </button>
+
   <div class="car-information-container">
-    <img
+    <div class="car-image-frame">
+
+      <img
       class="car-information-image"
-      [src]="vehicle.imagemUrl || '../../../assets/image-placeholder.webp'"
-      alt="Imagem do veículo">
-    <div class="car-information-left-wrapper">
-      <p class="car-information-title">{{ vehicle.marca }} {{ vehicle.modelo }} | {{ vehicle.ano }}</p>
+      [src]="mainPhotoUrl"
+      alt="Imagem do veículo"
+      width="256"
+      height="140"
+      loading="lazy"
+      />
+    </div>
+  <div class="car-information-left-wrapper">
+      <p class="car-information-title">{{ vehicle.brand }} {{ vehicle.model }} | {{ vehicle.year }}</p>
       <div class="car-information-details">
-        <p>Placa - <span class="highlighted-information">{{ vehicle.placa }}</span></p>
-        <p>Km - <span class="highlighted-information">{{ formatKm(vehicle.km) }}</span></p>
-        <p>Cor - <span class="highlighted-information">{{ vehicle.cor }}</span></p>
+        <p>Placa - <span class="highlighted-information">{{ vehicle.licensePlate }}</span></p>
+        <p>Km - <span class="highlighted-information">{{ formatKm(vehicle.mileage) }}</span></p>
+        <p>Cor - <span class="highlighted-information">{{ vehicle.color }}</span></p>
       </div>
     </div>
+
     <div class="car-information-right-wrapper">
-      <p class="car-information-pricing highlighted-information">{{ formatPrice(vehicle.preco) }}</p>
+      <p class="car-information-pricing highlighted-information">{{ formatPrice(vehicle.price) }}</p>
       <div class="car-information-sidemenu">
         <button class="edit-vehicle-button" [routerLink]="'/vehicle/edit/' + vehicle.id">
           <img src="../../../assets/edit.webp" alt="Editar veículo">
         </button>
         <div class="car-information-sidemenu-item">
           <img src="../../../assets/photo-counter.webp" alt="Fotos">
-          <p class="highlighted-information">{{ vehicle.quantidadeFotos.toString().padStart(2, '0') }}</p>
+          <p class="highlighted-information">{{ photosCount.toString().padStart(2, '0') }}</p>
         </div>
         <div class="car-information-sidemenu-item">
           <img src="../../../assets/optionals.webp" alt="Opcionais">
-          <p class="highlighted-information">{{ getOpcionaisText() }}</p>
+          <p class="highlighted-information">{{ opcionaisCount() }}</p>
         </div>
       </div>
-      <button class="clear-integration-v">
-        <img src="../../../assets/clear-integration-v.webp" alt="Limpar integração">
-      </button>
     </div>
   </div>
+
   <div class="integration-columns">
     <div class="integration-options-container">
       <div class="integration-option">
         <p>Diamante Feirão</p>
-        <input type="checkbox" name="diamante-feirao" value="diamante-feirao">
-        <label for="diamante-feirao">
+        <input
+          type="checkbox"
+          [checked]="selectedICarrosTier === 'DiamanteFeirao'"
+          (change)="onToggleICarros('DiamanteFeirao', $any($event.target).checked)" />
+        <label>
           <span class="highlighted-information-red">010</span> -
           <span class="highlighted-information">008</span>
         </label><br>
       </div>
       <div class="integration-option">
         <p>Diamante</p>
-        <input type="checkbox" name="diamante" value="diamante">
-        <label for="diamante">
+        <input
+          type="checkbox"
+          [checked]="selectedICarrosTier === 'Diamante'"
+          (change)="onToggleICarros('Diamante', $any($event.target).checked)" />
+        <label>
           <span class="highlighted-information-red">030</span> -
           <span class="highlighted-information">025</span>
         </label><br>
       </div>
       <div class="integration-option">
         <p>Platinum</p>
-        <input type="checkbox" name="platinum" value="platinum">
-        <label for="platinum">
+        <input
+          type="checkbox"
+          [checked]="selectedICarrosTier === 'Platinum'"
+          (change)="onToggleICarros('Platinum', $any($event.target).checked)" />
+        <label>
           <span class="highlighted-information-red">040</span> -
           <span class="highlighted-information">010</span>
         </label><br>
       </div>
     </div>
+
     <div class="vertical-divider"></div>
+
     <div class="integration-options-container">
       <div class="integration-option">
         <p>Básico</p>
-        <input type="checkbox" name="basico" value="basico">
-        <label for="basico">
+        <input
+          type="checkbox"
+          [checked]="selectedWebmotorsTier === 'Basico'"
+          (change)="onToggleWebmotors('Basico', $any($event.target).checked)" />
+        <label>
           <span class="highlighted-information-red">030</span> -
           <span class="highlighted-information">025</span>
         </label><br>
       </div>
     </div>
   </div>
+
   <div class="vertical-divider"></div>
 </div>

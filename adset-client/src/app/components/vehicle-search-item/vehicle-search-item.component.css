@@ -29,8 +29,20 @@
 }
 
 .car-information-image {
-    width: 256px;
-    height: 140px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     
+  object-position: center;
+  display: block;
+}
+
+.car-image-frame {
+  width: 256px;
+  height: 140px;
+  overflow: hidden;    
+  flex: 0 0 256px;      
+  display: block;
+  background: #fff;
 }
 
 .car-information-details {

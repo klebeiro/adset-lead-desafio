@@ -1,39 +1,110 @@
 <div class="vehicle-registration-form-container">
-  <form #vehicleForm="ngForm">
+  <h2>{{ isEdit ? 'Editar veículo' : 'Cadastrar veículo' }}</h2>
+
+  <form #vehicleForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="form-group">
-        <label for="marca">Marca</label>
-        <input id="marca" name="marca" type="text" ngModel required>
+        <label for="brand">Marca</label>
+        <input
+          id="brand"
+          name="brand"
+          type="text"
+          [(ngModel)]="formModel.brand"
+          required
+          maxlength="60"
+          placeholder="Ex.: Toyota"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.brand">Informe a marca.</small>
       </div>
+
       <div class="form-group">
-        <label for="modelo">Modelo</label>
-        <input id="modelo" name="modelo" type="text" ngModel required>
+        <label for="model">Modelo</label>
+        <input
+          id="model"
+          name="model"
+          type="text"
+          [(ngModel)]="formModel.model"
+          required
+          maxlength="80"
+          placeholder="Ex.: Corolla"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.model">Informe o modelo.</small>
       </div>
+
       <div class="form-group">
-        <label for="ano">Ano</label>
-        <input id="ano" name="ano" type="number" ngModel required>
+        <label for="year">Ano</label>
+        <input
+          id="year"
+          name="year"
+          type="number"
+          [(ngModel)]="formModel.year"
+          required
+          min="1980"
+          max="2099"
+          placeholder="Ex.: 2020"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.year">Informe o ano.</small>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
-        <label for="placa">Placa</label>
-        <input id="placa" name="placa" type="text" ngModel required>
+        <label for="licensePlate">Placa</label>
+        <input
+          id="licensePlate"
+          name="licensePlate"
+          type="text"
+          [(ngModel)]="formModel.licensePlate"
+          required
+          maxlength="10"
+          placeholder="Ex.: ABC1D23"
+          style="text-transform: uppercase"
+          [disabled]="isEdit"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.licensePlate">Informe a placa.</small>
       </div>
+
       <div class="form-group">
-        <label for="km">Km</label>
-        <input id="km" name="km" type="number" ngModel required>
+        <label for="mileage">Km</label>
+        <input
+          id="mileage"
+          name="mileage"
+          type="number"
+          [(ngModel)]="formModel.mileage"
+          min="0"
+          placeholder="Ex.: 45000"
+        />
       </div>
+
       <div class="form-group">
-        <label for="cor">Cor</label>
-        <input id="cor" name="cor" type="text" ngModel required>
+        <label for="color">Cor</label>
+        <input
+          id="color"
+          name="color"
+          type="text"
+          [(ngModel)]="formModel.color"
+          required
+          maxlength="40"
+          placeholder="Ex.: Prata"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.color">Informe a cor.</small>
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
-        <label for="preco">Preço</label>
-        <input id="preco" name="preco" type="number" ngModel required>
+        <label for="price">Preço</label>
+        <input
+          id="price"
+          name="price"
+          type="number"
+          [(ngModel)]="formModel.price"
+          required
+          min="0"
+          step="0.01"
+          placeholder="Ex.: 85000"
+        />
+        <small class="error" *ngIf="vehicleForm.submitted && !formModel.price">Informe o preço.</small>
       </div>
     </div>
 
@@ -42,19 +113,39 @@
         <label>Opcionais</label>
         <div class="checkbox-group">
           <label>
-            <input type="checkbox" name="opcionais" value="Ar Condicionado" ngModel>
+            <input
+              type="checkbox"
+              name="features-ac"
+              (change)="toggleFeature('AirConditioning', $any($event.target).checked)"
+              [checked]="hasFeature('AirConditioning')"
+            />
             Ar Condicionado
           </label>
           <label>
-            <input type="checkbox" name="opcionais" value="Alarme" ngModel>
+            <input
+              type="checkbox"
+              name="features-alarm"
+              (change)="toggleFeature('Alarm', $any($event.target).checked)"
+              [checked]="hasFeature('Alarm')"
+            />
             Alarme
           </label>
           <label>
-            <input type="checkbox" name="opcionais" value="Airbag" ngModel>
+            <input
+              type="checkbox"
+              name="features-airbag"
+              (change)="toggleFeature('Airbag', $any($event.target).checked)"
+              [checked]="hasFeature('Airbag')"
+            />
             Airbag
           </label>
           <label>
-            <input type="checkbox" name="opcionais" value="Freio ABS" ngModel>
+            <input
+              type="checkbox"
+              name="features-abs"
+              (change)="toggleFeature('ABSBrakes', $any($event.target).checked)"
+              [checked]="hasFeature('ABSBrakes')"
+            />
             Freio ABS
           </label>
         </div>
@@ -62,31 +153,39 @@
     </div>
 
     <div class="form-row">
-  <div class="form-group">
-    <label for="fotos">Fotos (até 15)</label>
-    <input
-      id="fotos"
-      type="file"
-      (change)="onFileSelected($event)"
-      [disabled]="photoPreviews.length >= 15"
-    />
-    <div class="photo-preview-list">
-      <div
-        class="photo-preview"
-        *ngFor="let preview of photoPreviews; let i = index"
-      >
-        <img [src]="preview" alt="Preview da foto" />
-        <button type="button" (click)="removePhoto(i)">Remover</button>
+      <div class="form-group">
+        <label for="photoUrl">Fotos (URLs, até {{ maxPhotos }})</label>
+        <div class="url-input-row">
+          <input
+            id="photoUrl"
+            type="url"
+            [(ngModel)]="newPhotoUrl"
+            name="photoUrl"
+            placeholder="https://exemplo.com/minha-imagem.jpg"
+            [disabled]="photoUrls.length >= maxPhotos"
+          />
+          <button type="button" class="btn-add-url" (click)="addPhotoUrl()" [disabled]="photoUrls.length >= maxPhotos">
+            Adicionar
+          </button>
+        </div>
+
+        <div class="photo-preview-list" *ngIf="photoUrls.length">
+          <div class="photo-preview" *ngFor="let url of photoUrls; let i = index">
+            <img [src]="url" alt="Preview da foto" />
+            <button type="button" (click)="removePhotoUrl(i)">Remover</button>
+          </div>
+        </div>
+
+        <small *ngIf="photoUrls.length >= maxPhotos" class="limit-warning">
+          Limite de {{ maxPhotos }} fotos atingido.
+        </small>
       </div>
     </div>
-    <small *ngIf="photoPreviews.length >= 15" class="limit-warning">
-      Limite de 15 fotos atingido.
-    </small>
-  </div>
-</div>
-    
+
     <div class="form-actions">
-      <button type="submit">Cadastrar</button>
+      <button type="submit" [disabled]="isSubmitting || vehicleForm.invalid">
+        {{ isSubmitting ? (isEdit ? 'Salvando...' : 'Cadastrando...') : (isEdit ? 'Salvar alterações' : 'Cadastrar') }}
+      </button>
     </div>
   </form>
 </div>

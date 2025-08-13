@@ -14,6 +14,11 @@ const routes: Routes = [
     component: VehicleRegistrationFormComponent,
     data: { title: 'Cadastrar veículo' }
   },
+  {
+    path: 'vehicle/edit/:id',
+    component: VehicleRegistrationFormComponent,
+    data: { title: 'Editar veículo' }
+  },
   { 
     path: '**', 
     component: VehicleSearchComponent,

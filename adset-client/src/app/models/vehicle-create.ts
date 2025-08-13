@@ -1,7 +1,6 @@
 import { PackageTier } from "../models";
 
-export interface Vehicle {
-  id: number;
+export interface VehicleCreate {
   brand: string;
   model: string;
   year: number;
@@ -11,7 +10,6 @@ export interface Vehicle {
   price: number;
   idICarrosPackageTier?: PackageTier;
   idWebmotorsPackageTier?: PackageTier;
-  photos: { id: number; url: string }[];
-  features: { id: number; idFeature: number; featureName?: string }[];
-  createdAt: string;
+  featureIds?: number[];
+  photoUrls?: string[];
 }
